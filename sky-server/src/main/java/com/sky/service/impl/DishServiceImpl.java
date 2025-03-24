@@ -32,6 +32,8 @@ public class DishServiceImpl implements DishService {
     private DishMapper dishMapper;
     @Autowired
     private DishFlavorMapper dishFlavorMapper;
+    @Autowired
+    private DishService dishService;
 
     /**
      * 新增菜品和对应的口味
@@ -146,6 +148,21 @@ public class DishServiceImpl implements DishService {
             //向口味表插入n条数据
             dishFlavorMapper.insertBatch(flavors);
         }
+    }
+
+//    @Override
+//    public List<Dish> getByCategoryId(Long categoryId) {
+//        Dish dish = Dish.builder()
+//                .categoryId(categoryId)
+//                .status(StatusConstant.ENABLE)
+//                .build();
+//
+//        return dishMapper.list(dish);
+//    }
+
+    @Override
+    public List<Dish> getByCategoryId(Long categoryId) {
+        return dishMapper.listByCategoryId(categoryId);
     }
 
 }
