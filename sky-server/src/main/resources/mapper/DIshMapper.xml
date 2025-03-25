@@ -38,4 +38,10 @@
         </set>
         where id = #{id}
     </update>
+
+    <select id="getSetmealIdById" resultType="java.lang.Long">
+        select s.setmeal_id from sky_take_out.setmeal_dish s
+        inner join sky_take_out.dish d on s.dish_id = d.id
+        where d.id = #{id}
+    </select>
 </mapper>
